@@ -2,11 +2,14 @@ import styled from 'styled-components'
 
 export const Header = styled.header`
   margin: auto;
-  background-color: #f0f8ff13;
-  min-height: 90px;
+  background-color: transparent;
+  height: 96px;
   display: flex;
   justify-content: center;
-  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0px 0px 5px #d7a33d;
+  z-index: 3;
 `
 export const AlignContent = styled.div`
   width: 100%;
@@ -17,7 +20,7 @@ export const AlignContent = styled.div`
   gap: 1rem;
 `
 export const Img = styled.img`
-  width: 220px;
+  width: 200px;
 `
 
 export const NavBar = styled.nav`
@@ -31,4 +34,8 @@ export const Link = styled.a`
   font-size: 1rem;
   letter-spacing: 0.025rem;
   cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    color: #d7a33d;
+  }
 `

@@ -3,8 +3,11 @@ import styled from 'styled-components'
 export const Background = styled.section`
   background: url(${(props) => props.$image}) center / cover;
   height: 100vh;
+  max-height: 992px;
+  padding-top: 96px;
   display: flex;
   justify-content: center;
+  position: relative;
   z-index: 1;
 
   &::before {

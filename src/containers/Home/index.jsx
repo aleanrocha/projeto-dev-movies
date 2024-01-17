@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+import Button from '../../components/Button'
 import api from '../../services/api'
 import { Background, AlignContent, Info, Poster } from './styles'
 
@@ -26,6 +27,8 @@ const Home = () => {
             <Info>
               <h1>{movie.original_title}</h1>
               <p>{movie.overview}</p>
+              <Button>Assistir agora</Button>
+              <Button>Assistir o trailer</Button>
             </Info>
             <Poster>
               <img

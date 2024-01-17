@@ -6,6 +6,7 @@ import Home from './containers/Home'
 import Movies from './containers/Movies'
 import Series from './containers/Series'
 import Root from './router/root'
+import GlobalStyle from './styles/globalStyle'
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <GlobalStyle />
     <RouterProvider router={router}></RouterProvider>
   </React.StrictMode>
 )

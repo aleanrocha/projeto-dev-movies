@@ -7,6 +7,7 @@ const globalStyle = createGlobalStyle`
     box-sizing: border-box;
     outline: none;
     text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
   }
   body {
     background-color: #080808;

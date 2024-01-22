@@ -9,6 +9,8 @@ import { Background, AlignContent, Info, Poster } from './styles'
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState()
   const [popularSeries, setPopularSeries] = useState()
+  const [ratedMovies, setRatedMovies] = useState()
+  const [ratedSeries, setRatedSeries] = useState()
 
   useEffect(() => {
     const handleGetPopularMovies = async () => {
@@ -26,6 +28,22 @@ const Home = () => {
       setPopularSeries(results)
     }
     handleGetPopularSeries()
+
+    const handleGetRatedMovies = async () => {
+      const {
+        data: { results }
+      } = await api.get('movie/top_rated')
+      setRatedMovies(results)
+    }
+    handleGetRatedMovies()
+
+    const handleGetRatedSeries = async () => {
+      const {
+        data: { results }
+      } = await api.get('tv/top_rated')
+      setRatedSeries(results)
+    }
+    handleGetRatedSeries()
   }, [])
 
   return (
@@ -54,6 +72,8 @@ const Home = () => {
       {popularSeries && (
         <Slider info={popularSeries} title={'Séries populares'} />
       )}
+      {ratedMovies && <Slider info={ratedMovies} title={'Top filmes'} />}
+      {ratedSeries && <Slider info={ratedSeries} title={'Top séries'} />}
     </>
   )
 }

@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 
 import Button from '../../components/Button'
+import Slider from '../../components/Slider'
 import api from '../../services/api'
 import { Background, AlignContent, Info, Poster } from './styles'
 
 const Home = () => {
   const [movie, setMovie] = useState()
+  const [ratedMovies, setRatedMovies] = useState()
 
   useEffect(() => {
     const handleGetMovies = async () => {
@@ -15,6 +17,14 @@ const Home = () => {
       setMovie(results[0])
     }
     handleGetMovies()
+
+    const handleGetRatedMovies = async () => {
+      const {
+        data: { results }
+      } = await api.get('movie/top_rated')
+      setRatedMovies(results)
+    }
+    handleGetRatedMovies()
   }, [])
 
   return (
@@ -39,6 +49,7 @@ const Home = () => {
           </AlignContent>
         </Background>
       )}
+      {ratedMovies && <Slider ratedMovies={ratedMovies} title={'Top filmes'} />}
     </>
   )
 }

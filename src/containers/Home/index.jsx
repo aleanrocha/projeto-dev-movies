@@ -48,7 +48,7 @@ const Home = () => {
           </AlignContent>
         </Background>
       )}
-      {ratedMovies && <Slider ratedMovies={ratedMovies} title={'Top filmes'} />}
+      {ratedMovies && <Slider movies={ratedMovies} title={'Top filmes'} />}
     </>
   )
 }

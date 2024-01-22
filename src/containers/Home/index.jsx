@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import Button from '../../components/Button'
 import Slider from '../../components/Slider'
 import api from '../../services/api'
+import getImages from '../../utils/getImages'
 import { Background, AlignContent, Info, Poster } from './styles'
 
 const Home = () => {
@@ -30,9 +31,7 @@ const Home = () => {
   return (
     <>
       {movie && (
-        <Background
-          $image={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-        >
+        <Background $image={getImages(movie.backdrop_path)}>
           <AlignContent>
             <Info>
               <h1>{movie.original_title}</h1>
@@ -42,7 +41,7 @@ const Home = () => {
             </Info>
             <Poster>
               <img
-                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                src={getImages(movie.poster_path)}
                 alt={`imagem ${movie.original_title}`}
               />
             </Poster>

@@ -7,48 +7,53 @@ import getImages from '../../utils/getImages'
 import { Background, AlignContent, Info, Poster } from './styles'
 
 const Home = () => {
-  const [movie, setMovie] = useState()
-  const [ratedMovies, setRatedMovies] = useState()
+  const [popularMovies, setPopularMovies] = useState()
+  const [popularSeries, setPopularSeries] = useState()
 
   useEffect(() => {
-    const handleGetMovies = async () => {
+    const handleGetPopularMovies = async () => {
       const {
         data: { results }
       } = await api.get('movie/popular')
-      setMovie(results[0])
+      setPopularMovies(results)
     }
-    handleGetMovies()
+    handleGetPopularMovies()
 
-    const handleGetRatedMovies = async () => {
+    const handleGetPopularSeries = async () => {
       const {
         data: { results }
-      } = await api.get('movie/top_rated')
-      setRatedMovies(results)
+      } = await api.get('tv/popular')
+      setPopularSeries(results)
     }
-    handleGetRatedMovies()
+    handleGetPopularSeries()
   }, [])
 
   return (
     <>
-      {movie && (
-        <Background $image={getImages(movie.backdrop_path)}>
+      {popularMovies && (
+        <Background $image={getImages(popularMovies[0].backdrop_path)}>
           <AlignContent>
             <Info>
-              <h1>{movie.original_title}</h1>
-              <p>{movie.overview}</p>
+              <h1>{popularMovies[0].original_title}</h1>
+              <p>{popularMovies[0].overview}</p>
               <Button>Assistir agora</Button>
               <Button>Assistir o trailer</Button>
             </Info>
             <Poster>
               <img
-                src={getImages(movie.poster_path)}
-                alt={`imagem ${movie.original_title}`}
+                src={getImages(popularMovies[0].poster_path)}
+                alt={`imagem ${popularMovies[0].original_title}`}
               />
             </Poster>
           </AlignContent>
         </Background>
       )}
-      {ratedMovies && <Slider movies={ratedMovies} title={'Top filmes'} />}
+      {popularMovies && (
+        <Slider info={popularMovies} title={'Filmes populares'} />
+      )}
+      {popularSeries && (
+        <Slider info={popularSeries} title={'Séries populares'} />
+      )}
     </>
   )
 }

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const SwipeContainer = styled.section`
-  padding: 6rem 2rem;
+  padding: 6rem 2rem 0;
   .swiper-wrapper {
     display: flex;
   }

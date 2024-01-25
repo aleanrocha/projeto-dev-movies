@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+import Detail from './containers/Detail'
 import Home from './containers/Home'
 import Movies from './containers/Movies'
 import Series from './containers/Series'
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: 'series',
         element: <Series />
+      },
+      {
+        path: 'detalhe/:id',
+        element: <Detail />
       }
     ]
   }

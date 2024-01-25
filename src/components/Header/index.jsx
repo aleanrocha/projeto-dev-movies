@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 import logo from '../../assets/dev-movies-logo.png'
 import {
@@ -7,28 +8,44 @@ import {
   Img,
   NavBarContainer,
   NavBar,
-  Link,
   ShowMenu,
   CloseMenu
 } from './styles'
 
 const Header = () => {
   const [open, setOpen] = useState(false)
+  const [changeBackground, setChangeBackground] = useState(false)
 
   const handleToggleMenu = () => setOpen(!open)
 
+  window.onscroll = () => {
+    if (!changeBackground && window.scrollY > 96) {
+      setChangeBackground(true)
+    }
+    if (changeBackground && window.scrollY <= 96) {
+      setChangeBackground(false)
+    }
+  }
+
   console.log(open)
   return (
-    <HeaderContainer>
+    <HeaderContainer $changeBackground={changeBackground}>
       <AlignContent>
         <Img src={logo} alt="logo dev movies" />
         <NavBarContainer $isMobile={open}>
           <ShowMenu $isMobile={open} onClick={handleToggleMenu} />
           <CloseMenu $isMobile={open} onClick={handleToggleMenu} />
           <NavBar $isMobile={open}>
-            <Link>Início</Link>
-            <Link>Filmes</Link>
-            <Link>Séries</Link>
+            <NavLink
+              to={'/'}
+              className={({ isActive, isPending }) =>
+                isPending ? 'pending' : isActive ? 'active' : ''
+              }
+            >
+              Início
+            </NavLink>
+            <NavLink to={'/filmes'}>Filmes</NavLink>
+            <NavLink to={'/series'}>Séries</NavLink>
           </NavBar>
         </NavBarContainer>
       </AlignContent>

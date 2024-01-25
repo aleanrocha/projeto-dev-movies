@@ -4,15 +4,20 @@ import styled from 'styled-components'
 
 export const Header = styled.header`
   margin: auto;
-  background-color: transparent;
   height: 96px;
   display: flex;
   justify-content: center;
   padding: 1rem 2rem;
   position: fixed;
   width: 100%;
-  box-shadow: 0px 0px 5px #d7a33d;
+  background-color: ${(props) =>
+    props.$changeBackground ? '#00000094' : 'transparent'};
+  box-shadow: ${(props) =>
+    props.$changeBackground ? '0px 0px 5px #d7a33d' : 'none'};
   z-index: 3;
+  backdrop-filter: ${(props) =>
+    props.$changeBackground ? 'blur(.3rem)' : '0'};
+  transition: background-color 0.3s ease-in-out;
 `
 export const AlignContent = styled.div`
   width: 100%;
@@ -24,6 +29,9 @@ export const AlignContent = styled.div`
 `
 export const Img = styled.img`
   width: 150px;
+  @media screen and (max-width: 480px) {
+    width: 120px;
+  }
 `
 export const NavBarContainer = styled.div`
   ${(props) =>
@@ -59,16 +67,38 @@ export const NavBar = styled.nav`
   @media screen and (max-width: 768px) {
     display: ${(props) => (props.$isMobile ? 'flex' : 'none')};
   }
-`
-export const Link = styled.a`
-  color: #fafafa;
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 0.025rem;
-  cursor: pointer;
-  transition: 0.3s;
-  &:hover {
-    color: #d7a33d;
+  & > a {
+    color: #fafafa;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.025rem;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    &::after {
+      content: '';
+      display: block;
+      width: 0%;
+      height: 3px;
+      background-color: #d7a33d;
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      transform: translate(-50%);
+      transition: width 0.3s ease-in-out;
+    }
+    &:hover {
+      color: #d7a33d;
+    }
+    &:hover::after {
+      width: 100%;
+    }
+    &.active {
+      color: #d7a33d;
+    }
+    &.active::after {
+      width: 100%;
+    }
   }
 `
 export const ShowMenu = styled(FaBars)`

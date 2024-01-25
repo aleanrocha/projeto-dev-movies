@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import Button from '../../components/Button'
+import Modal from '../../components/Modal'
 import Slider from '../../components/Slider'
 import api from '../../services/api'
 import getImages from '../../utils/getImages'
@@ -12,6 +13,7 @@ const Home = () => {
   const [ratedMovies, setRatedMovies] = useState()
   const [ratedSeries, setRatedSeries] = useState()
   const [popularPerson, setPopularPerson] = useState()
+  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     const handleGetPopularMovies = async () => {
@@ -50,7 +52,6 @@ const Home = () => {
       const {
         data: { results }
       } = await api.get('person/popular')
-      console.log(results)
       setPopularPerson(results)
     }
     handleGetPopularPerson()
@@ -60,12 +61,17 @@ const Home = () => {
     <>
       {popularMovies && (
         <Background $image={getImages(popularMovies[0].backdrop_path)}>
+          {showModal && (
+            <Modal setShowModal={setShowModal} movieId={popularMovies[0].id} />
+          )}
           <AlignContent>
             <Info>
               <h1>{popularMovies[0].original_title}</h1>
               <p>{popularMovies[0].overview}</p>
               <Button>Assistir agora</Button>
-              <Button>Assistir o trailer</Button>
+              <Button onClick={() => setShowModal(true)}>
+                Assistir o trailer
+              </Button>
             </Info>
             <Poster>
               <img

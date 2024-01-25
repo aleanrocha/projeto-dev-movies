@@ -7,7 +7,6 @@ export const Background = styled.section`
   padding-top: 96px;
   display: flex;
   justify-content: center;
-  position: relative;
   z-index: 1;
 
   &::before {

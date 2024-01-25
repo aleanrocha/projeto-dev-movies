@@ -11,6 +11,7 @@ const Home = () => {
   const [popularSeries, setPopularSeries] = useState()
   const [ratedMovies, setRatedMovies] = useState()
   const [ratedSeries, setRatedSeries] = useState()
+  const [popularPerson, setPopularPerson] = useState()
 
   useEffect(() => {
     const handleGetPopularMovies = async () => {
@@ -44,6 +45,15 @@ const Home = () => {
       setRatedSeries(results)
     }
     handleGetRatedSeries()
+
+    const handleGetPopularPerson = async () => {
+      const {
+        data: { results }
+      } = await api.get('person/popular')
+      console.log(results)
+      setPopularPerson(results)
+    }
+    handleGetPopularPerson()
   }, [])
 
   return (
@@ -74,6 +84,9 @@ const Home = () => {
       )}
       {ratedMovies && <Slider info={ratedMovies} title={'Top filmes'} />}
       {ratedSeries && <Slider info={ratedSeries} title={'Top séries'} />}
+      {popularPerson && (
+        <Slider isPerson info={popularPerson} title={'Top atores'} />
+      )}
     </>
   )
 }

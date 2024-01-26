@@ -4,7 +4,13 @@ import { useNavigate } from 'react-router-dom'
 import Button from '../../components/Button'
 import Modal from '../../components/Modal'
 import Slider from '../../components/Slider'
-import api from '../../services/api'
+import {
+  getPopularMovies,
+  getPopularPerson,
+  getPopularSeries,
+  getRatedMovies,
+  getRatedSeries
+} from '../../services/getData'
 import getImages from '../../utils/getImages'
 import { Background, AlignContent, Info, Poster } from './styles'
 
@@ -19,45 +25,14 @@ const Home = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const handleGetPopularMovies = async () => {
-      const {
-        data: { results }
-      } = await api.get('movie/popular')
-      setPopularMovies(results)
+    const getAllData = async () => {
+      setPopularMovies(await getPopularMovies())
+      setPopularSeries(await getPopularSeries())
+      setRatedMovies(await getRatedMovies())
+      setRatedSeries(await getRatedSeries())
+      setPopularPerson(await getPopularPerson())
     }
-    handleGetPopularMovies()
-
-    const handleGetPopularSeries = async () => {
-      const {
-        data: { results }
-      } = await api.get('tv/popular')
-      setPopularSeries(results)
-    }
-    handleGetPopularSeries()
-
-    const handleGetRatedMovies = async () => {
-      const {
-        data: { results }
-      } = await api.get('movie/top_rated')
-      setRatedMovies(results)
-    }
-    handleGetRatedMovies()
-
-    const handleGetRatedSeries = async () => {
-      const {
-        data: { results }
-      } = await api.get('tv/top_rated')
-      setRatedSeries(results)
-    }
-    handleGetRatedSeries()
-
-    const handleGetPopularPerson = async () => {
-      const {
-        data: { results }
-      } = await api.get('person/popular')
-      setPopularPerson(results)
-    }
-    handleGetPopularPerson()
+    getAllData()
   }, [])
 
   return (

@@ -1,33 +1,28 @@
 import { useState, useEffect } from 'react'
 import { FaX } from 'react-icons/fa6'
 
-import api from '../../services/api'
+import { getPopularMovieVideo } from '../../services/getData'
 import { Background, ModalContainer } from './styles'
 
 const Modal = ({ movieId, setShowModal }) => {
-  const [popularMovies, setPopularMovies] = useState()
+  const [popularMovieVideo, setPopularMovieVideo] = useState()
 
   useEffect(() => {
-    const handleGetPopularMovies = async () => {
-      const {
-        data: { results }
-      } = await api.get(`movie/${movieId}/videos`)
-      setPopularMovies(results)
+    const getPopularVideo = async () => {
+      setPopularMovieVideo(await getPopularMovieVideo(movieId))
     }
-    handleGetPopularMovies()
+    getPopularVideo()
   }, [])
-  console.log(popularMovies)
 
   return (
     <Background>
-      {popularMovies && (
+      {popularMovieVideo && (
         <ModalContainer>
           <FaX onClick={() => setShowModal(false)} />
           <iframe
-            src={`https://www.youtube.com/embed/${popularMovies[0].key}`}
+            src={`https://www.youtube.com/embed/${popularMovieVideo.key}`}
             title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </ModalContainer>
       )}

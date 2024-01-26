@@ -27,7 +27,6 @@ const Header = () => {
     }
   }
 
-  console.log(open)
   return (
     <HeaderContainer $changeBackground={changeBackground}>
       <AlignContent>

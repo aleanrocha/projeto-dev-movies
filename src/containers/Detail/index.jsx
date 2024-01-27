@@ -7,7 +7,8 @@ import {
   getPopularMovieSimilar,
   getPopularMovieCredits
 } from '../../services/getData'
-import { DetailContainer } from './styles'
+import getImages from '../../utils/getImages'
+import { Background, Cover, Info, DetailContainer } from './styles'
 
 const Detail = () => {
   const [popularMovie, setPopularMovie] = useState()
@@ -38,9 +39,30 @@ const Detail = () => {
   }, [])
 
   return (
-    <DetailContainer>
-      <div>detalhe</div>
-    </DetailContainer>
+    <>
+      {popularMovie && (
+        <>
+          <Background
+            $image={getImages(popularMovie.backdrop_path)}
+          ></Background>
+
+          <DetailContainer>
+            <Cover>
+              <img
+                src={getImages(popularMovie.poster_path)}
+                alt={`imagem ${popularMovie.title} `}
+              />
+            </Cover>
+            <Info>
+              <h1>{popularMovie.title}</h1>
+              <div>Generos</div>
+              <p>{popularMovie.overview}</p>
+              <div>Créditos</div>
+            </Info>
+          </DetailContainer>
+        </>
+      )}
+    </>
   )
 }
 

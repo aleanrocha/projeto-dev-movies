@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { FaX } from 'react-icons/fa6'
 
-import { getPopularMovieVideo } from '../../services/getData'
+import { getPopularMovieVideos } from '../../services/getData'
 import { Background, ModalContainer } from './styles'
 
 const Modal = ({ movieId, setShowModal }) => {
@@ -9,7 +9,7 @@ const Modal = ({ movieId, setShowModal }) => {
 
   useEffect(() => {
     const getPopularVideo = async () => {
-      setPopularMovieVideo(await getPopularMovieVideo(movieId))
+      setPopularMovieVideo(await getPopularMovieVideos(movieId))
     }
     getPopularVideo()
   }, [])

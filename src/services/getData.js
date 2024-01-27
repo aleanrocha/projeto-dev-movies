@@ -35,9 +35,24 @@ export const getPopularPerson = async () => {
   return results
 }
 
-export const getPopularMovieVideo = async (movieId) => {
+export const getPopularMovieVideos = async (movieId) => {
   const {
     data: { results }
   } = await api.get(`movie/${movieId}/videos`)
   return results[0]
+}
+
+export const getPopularMovieCredits = async (movieId) => {
+  const { data } = await api.get(`movie/${movieId}/credits`)
+  return data
+}
+
+export const getPopularMovieSimilar = async (movieId) => {
+  const { data } = await api.get(`movie/${movieId}/similar`)
+  return data
+}
+
+export const getPopularMovieById = async (movieId) => {
+  const { data } = await api.get(`movie/${movieId}`)
+  return data
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
+import SpanGeneres from '../../components/SpanGenres'
 import {
   getPopularMovieById,
   getPopularMovieVideos,
@@ -16,7 +17,6 @@ const Detail = () => {
   const [popularMovieSimilar, setPopularMovieSimilar] = useState()
   const [popularMovieCredits, setPopularMovieCredits] = useState()
   const { id } = useParams()
-  console.log(id)
 
   useEffect(() => {
     const getAllData = async () => {
@@ -55,7 +55,7 @@ const Detail = () => {
             </Cover>
             <Info>
               <h1>{popularMovie.title}</h1>
-              <div>Generos</div>
+              <SpanGeneres genres={popularMovie.genres} />
               <p>{popularMovie.overview}</p>
               <div>Créditos</div>
             </Info>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
+import Credits from '../../components/Credits'
 import SpanGeneres from '../../components/SpanGenres'
 import {
   getPopularMovieById,
@@ -57,7 +58,7 @@ const Detail = () => {
               <h1>{popularMovie.title}</h1>
               <SpanGeneres genres={popularMovie.genres} />
               <p>{popularMovie.overview}</p>
-              <div>Créditos</div>
+              <Credits credits={popularMovieCredits} />
             </Info>
           </DetailContainer>
         </>

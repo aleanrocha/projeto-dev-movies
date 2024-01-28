@@ -20,7 +20,7 @@ const Modal = ({ movieId, setShowModal }) => {
         <ModalContainer>
           <FaX onClick={() => setShowModal(false)} />
           <iframe
-            src={`https://www.youtube.com/embed/${popularMovieVideo.key}`}
+            src={`https://www.youtube.com/embed/${popularMovieVideo[0].key}`}
             title="YouTube video player"
             allowFullScreen
           ></iframe>

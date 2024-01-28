@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import Credits from '../../components/Credits'
+import Slider from '../../components/Slider'
 import SpanGeneres from '../../components/SpanGenres'
 import {
   getPopularMovieById,
@@ -10,7 +11,13 @@ import {
   getPopularMovieCredits
 } from '../../services/getData'
 import getImages from '../../utils/getImages'
-import { Background, Cover, Info, DetailContainer } from './styles'
+import {
+  Background,
+  Cover,
+  Info,
+  DetailContainer,
+  VideoContainer
+} from './styles'
 
 const Detail = () => {
   const [popularMovie, setPopularMovie] = useState()
@@ -46,7 +53,6 @@ const Detail = () => {
           <Background
             $image={getImages(popularMovie.backdrop_path)}
           ></Background>
-
           <DetailContainer>
             <Cover>
               <img
@@ -62,6 +68,24 @@ const Detail = () => {
             </Info>
           </DetailContainer>
         </>
+      )}
+      <VideoContainer>
+        <h2>Principais Trailers</h2>
+        <div>
+          {popularMovieVideos &&
+            popularMovieVideos.map((video) => (
+              <div key={video.id}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.key}`}
+                  title="YouTube video player"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            ))}
+        </div>
+      </VideoContainer>
+      {popularMovieSimilar && (
+        <Slider info={popularMovieSimilar} title={'Filmes similares'} />
       )}
     </>
   )

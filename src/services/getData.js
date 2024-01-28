@@ -39,7 +39,7 @@ export const getPopularMovieVideos = async (movieId) => {
   const {
     data: { results }
   } = await api.get(`movie/${movieId}/videos`)
-  return results[0]
+  return results
 }
 
 export const getPopularMovieCredits = async (movieId) => {
@@ -50,8 +50,10 @@ export const getPopularMovieCredits = async (movieId) => {
 }
 
 export const getPopularMovieSimilar = async (movieId) => {
-  const { data } = await api.get(`movie/${movieId}/similar`)
-  return data
+  const {
+    data: { results }
+  } = await api.get(`movie/${movieId}/similar`)
+  return results
 }
 
 export const getPopularMovieById = async (movieId) => {

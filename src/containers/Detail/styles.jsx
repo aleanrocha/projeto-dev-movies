@@ -33,7 +33,7 @@ export const Background = styled.section`
   }
 `
 export const DetailContainer = styled.section`
-  position: absolute;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -66,5 +66,40 @@ export const Info = styled.div`
   > p {
     font-size: 0.9rem;
     line-height: 1.5rem;
+  }
+`
+export const VideoContainer = styled.section`
+  width: 95%;
+  max-width: 1440px;
+  margin: 3rem auto 0;
+
+  > h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  > div {
+    background-color: #1f1e1e;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 2rem;
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: repeat(1, 1fr);
+      padding: 1rem;
+    }
+    > div {
+      background-color: #000;
+      width: 100%;
+      height: 300px;
+
+      > iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    }
   }
 `

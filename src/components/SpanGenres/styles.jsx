@@ -4,6 +4,9 @@ export const GenreContainer = styled.div`
   width: 100%;
   display: flex;
   gap: 0.6rem;
+  @media screen and (max-width: 580px) {
+    justify-content: center;
+  }
 `
 export const Span = styled.span`
   background-color: transparent;

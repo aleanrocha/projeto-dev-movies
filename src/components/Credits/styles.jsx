@@ -5,6 +5,9 @@ export const CreditContainer = styled.div`
 `
 export const Title = styled.h3`
   margin-bottom: 1.5rem;
+  @media screen and (max-width: 580px) {
+    text-align: center;
+  }
 `
 export const Credit = styled.div`
   width: 100%;
@@ -15,11 +18,14 @@ export const Credit = styled.div`
     text-align: center;
     > img {
       width: 100%;
-      border-radius: 1rem;
     }
     > h4 {
       font-size: 0.8rem;
       margin-top: 0.3rem;
     }
+  }
+  @media screen and (max-width: 580px) {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 `

@@ -11,7 +11,7 @@ const scale = keyframes`
 
 export const Background = styled.section`
   background: url(${(props) => props.$image}) center top / cover;
-  height: 45vh;
+  height: 50vh;
   position: relative;
   &::before {
     content: '';
@@ -41,15 +41,21 @@ export const DetailContainer = styled.section`
   width: 100%;
   max-width: 1440px;
   padding: 2rem;
-  margin-top: -90px;
+  margin: -90px auto 0;
+  @media screen and (max-width: 580px) {
+    margin: -72px auto 0;
+  }
 `
 export const Cover = styled.div`
   width: 100%;
-  max-width: 300px;
+  max-width: 360px;
   animation: ${scale} 0.5s linear;
   > img {
     width: 100%;
     border-radius: 1rem;
+  }
+  @media screen and (max-width: 992px) {
+    display: none;
   }
 `
 
@@ -67,6 +73,19 @@ export const Info = styled.div`
     font-size: 0.9rem;
     line-height: 1.5rem;
   }
+  @media screen and (max-width: 992px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 580px) {
+    > h1 {
+      font-size: 2rem;
+      text-align: center;
+    }
+    > p {
+      font-size: 0.8rem;
+      text-align: center;
+    }
+  }
 `
 export const VideoContainer = styled.section`
   width: 95%;
@@ -74,8 +93,10 @@ export const VideoContainer = styled.section`
   margin: 3rem auto 0;
 
   > h2 {
+    color: #d7a33d;
     text-align: center;
-    margin-bottom: 2rem;
+    margin: 1.5rem 0;
+    text-transform: uppercase;
   }
 
   > div {

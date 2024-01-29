@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import Credits from '../../components/Credits'
+import Loader from '../../components/Loader'
 import Slider from '../../components/Slider'
 import SpanGeneres from '../../components/SpanGenres'
 import {
@@ -48,7 +49,7 @@ const Detail = () => {
 
   return (
     <>
-      {popularMovie && (
+      {popularMovie ? (
         <>
           <Background
             $image={getImages(popularMovie.backdrop_path)}
@@ -67,25 +68,27 @@ const Detail = () => {
               <Credits credits={popularMovieCredits} />
             </Info>
           </DetailContainer>
+          <VideoContainer>
+            <h2>Principais Trailers</h2>
+            <div>
+              {popularMovieVideos &&
+                popularMovieVideos.map((video) => (
+                  <div key={video.id}>
+                    <iframe
+                      src={`https://www.youtube.com/embed/${video.key}`}
+                      title="YouTube video player"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                ))}
+            </div>
+          </VideoContainer>
+          {popularMovieSimilar && (
+            <Slider info={popularMovieSimilar} title={'Filmes similares'} />
+          )}
         </>
-      )}
-      <VideoContainer>
-        <h2>Principais Trailers</h2>
-        <div>
-          {popularMovieVideos &&
-            popularMovieVideos.map((video) => (
-              <div key={video.id}>
-                <iframe
-                  src={`https://www.youtube.com/embed/${video.key}`}
-                  title="YouTube video player"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            ))}
-        </div>
-      </VideoContainer>
-      {popularMovieSimilar && (
-        <Slider info={popularMovieSimilar} title={'Filmes similares'} />
+      ) : (
+        <Loader />
       )}
     </>
   )

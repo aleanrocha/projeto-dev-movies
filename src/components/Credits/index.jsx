@@ -1,7 +1,6 @@
 import getImages from '../../utils/getImages'
 import { Credit, CreditContainer, Title } from './styles'
 const Credits = ({ credits }) => {
-  console.log(credits)
   return (
     <CreditContainer>
       <Title>Créditos</Title>

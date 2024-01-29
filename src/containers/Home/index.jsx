@@ -67,7 +67,7 @@ const Home = () => {
             )}
             <AlignContent>
               <Info>
-                <h1>{popularMovies[0].original_title}</h1>
+                <h1>{popularMovies[0].title}</h1>
                 <p>{popularMovies[0].overview}</p>
                 <Button
                   onClick={() => navigate(`detalhe/${popularMovies[0].id}/`)}

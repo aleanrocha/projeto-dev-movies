@@ -1,4 +1,13 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const scale = keyframes`
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+`
 
 export const Background = styled.section`
   background: url(${(props) => props.$image}) center / cover;
@@ -53,15 +62,18 @@ export const Info = styled.div`
   }
 `
 export const Poster = styled.div`
-  max-width: 300px;
+  max-width: 320px;
+  animation: ${scale} 0.5s linear;
+
   & > img {
     width: 100%;
     border-radius: 1rem;
-    transition: 0.3s;
+    transition: 0.3s linear;
   }
   & > img:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
   }
+
   @media screen and (max-width: 768px) {
     display: none;
   }

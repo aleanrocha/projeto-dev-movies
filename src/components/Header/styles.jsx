@@ -21,7 +21,7 @@ export const Header = styled.header`
 `
 export const AlignContent = styled.div`
   width: 100%;
-  max-width: 1280px;
+  max-width: 1440px;
   display: flex;
   justify-content: space-between;
   align-items: center;

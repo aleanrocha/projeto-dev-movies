@@ -36,7 +36,6 @@ const Detail = () => {
         getPopularMovieCredits(id)
       ])
         .then(([movie, video, similar, credits]) => {
-          console.log({ movie, video, similar, credits })
           setPopularMovie(movie)
           setPopularMovieVideos(video)
           setPopularMovieSimilar(similar)

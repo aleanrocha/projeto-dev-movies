@@ -6,12 +6,16 @@ const rotate = keyframes`
   }
 `
 const LoaderContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
   background-color: #080808;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
 
   > span {
     width: 45px;

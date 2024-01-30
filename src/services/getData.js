@@ -67,3 +67,10 @@ export const getUpcomingMovie = async () => {
   } = await api.get(`movie/upcoming`)
   return results
 }
+
+export const getPopularSerieVideos = async (serieId) => {
+  const {
+    data: { results }
+  } = await api.get(`tv/${serieId}/videos`)
+  return results
+}

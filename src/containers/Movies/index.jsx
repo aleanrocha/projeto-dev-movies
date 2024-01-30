@@ -38,7 +38,9 @@ const Movies = () => {
                 <h1>{upcomingMovie[0].title}</h1>
                 <p>{upcomingMovie[0].overview}</p>
                 <Button
-                  onClick={() => navigate(`detalhe/${upcomingMovie[0].id}/`)}
+                  onClick={() =>
+                    navigate(`/detalhe/filme/${upcomingMovie[0].id}/`)
+                  }
                 >
                   Assistir agora
                 </Button>

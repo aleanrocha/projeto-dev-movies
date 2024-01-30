@@ -60,3 +60,10 @@ export const getPopularMovieById = async (movieId) => {
   const { data } = await api.get(`movie/${movieId}`)
   return data
 }
+
+export const getUpcomingMovie = async () => {
+  const {
+    data: { results }
+  } = await api.get(`movie/upcoming`)
+  return results
+}

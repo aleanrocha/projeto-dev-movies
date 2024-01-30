@@ -26,6 +26,7 @@ const Detail = () => {
   const [popularMovieSimilar, setPopularMovieSimilar] = useState()
   const [popularMovieCredits, setPopularMovieCredits] = useState()
   const { id } = useParams()
+  console.log(id)
 
   useEffect(() => {
     const getAllData = async () => {

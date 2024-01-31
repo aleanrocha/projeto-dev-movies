@@ -19,7 +19,7 @@ const Movies = () => {
     <>
       {upcomingMovie ? (
         <>
-          <Background media={upcomingMovie[0]} />
+          <Background media={upcomingMovie[0]} type={'movies'} />
           <Slider
             isPerson
             info={upcomingMovie}

@@ -4,17 +4,18 @@ import { FaX } from 'react-icons/fa6'
 import { getMovieVideos, getSerieVideos } from '../../services/getData'
 import { Background, ModalContainer } from './styles'
 
-const Modal = ({ movieId, serieId, setShowModal }) => {
+const Modal = ({ mediaId, type, setShowModal }) => {
   const [movieVideo, setMovieVideo] = useState()
   const [serieVideo, setSerieVideo] = useState()
 
   useEffect(() => {
     const getVideos = async () => {
-      if (movieId) setMovieVideo(await getMovieVideos(movieId))
-      if (serieId) setSerieVideo(await getSerieVideos(serieId))
+      type === 'series'
+        ? setSerieVideo(await getSerieVideos(mediaId))
+        : setMovieVideo(await getMovieVideos(mediaId))
     }
     getVideos()
-  }, [movieId, serieId])
+  }, [type, mediaId])
 
   return (
     <Background>

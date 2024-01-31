@@ -19,7 +19,7 @@ const Series = () => {
     <>
       {ratedSeries ? (
         <>
-          <Background media={ratedSeries[0]} />
+          <Background media={ratedSeries[0]} type={'series'} />
           <Slider isPerson info={ratedSeries} title={'Séries populares'} />
         </>
       ) : (

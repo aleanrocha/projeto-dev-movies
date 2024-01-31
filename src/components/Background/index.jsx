@@ -6,18 +6,29 @@ import Modal from '../../components/Modal'
 import getImages from '../../utils/getImages'
 import { BackgroundContainer, AlignContent, Info, Poster } from './styles'
 
-const Background = ({ media }) => {
+const Background = ({ media, type }) => {
+  console.log(type)
   const [showModal, setShowModal] = useState(false)
   const navigate = useNavigate()
 
   return (
     <BackgroundContainer $image={getImages(media.backdrop_path)}>
-      {showModal && <Modal setShowModal={setShowModal} movieId={media.id} />}
+      {showModal && (
+        <Modal setShowModal={setShowModal} mediaId={media.id} type={type} />
+      )}
       <AlignContent>
         <Info>
           <h1>{media.title || media.name}</h1>
           <p>{media.overview}</p>
-          <Button onClick={() => navigate(`detalhe/filme/${media.id}/`)}>
+          <Button
+            onClick={() =>
+              navigate(
+                type === 'series'
+                  ? `/detalhe/serie/${media.id}/`
+                  : `/detalhe/filme/${media.id}/`
+              )
+            }
+          >
             Assistir agora
           </Button>
           <Button onClick={() => setShowModal(true)}>Assistir o trailer</Button>

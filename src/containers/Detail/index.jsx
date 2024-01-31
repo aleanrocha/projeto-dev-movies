@@ -6,10 +6,14 @@ import Loader from '../../components/Loader'
 import Slider from '../../components/Slider'
 import SpanGeneres from '../../components/SpanGenres'
 import {
-  getPopularMovieById,
-  getPopularMovieVideos,
-  getPopularMovieSimilar,
-  getPopularMovieCredits
+  getMovieById,
+  getMovieVideos,
+  getMovieSimilar,
+  getMovieCredits,
+  getSerieById,
+  getSerieVideos,
+  getSerieSimilar,
+  getSerieCredits
 } from '../../services/getData'
 import getImages from '../../utils/getImages'
 import {
@@ -21,58 +25,56 @@ import {
 } from './styles'
 
 const Detail = () => {
-  const [popularMovie, setPopularMovie] = useState()
-  const [popularMovieVideos, setPopularMovieVideos] = useState()
-  const [popularMovieSimilar, setPopularMovieSimilar] = useState()
-  const [popularMovieCredits, setPopularMovieCredits] = useState()
-  const { id } = useParams()
-  console.log(id)
+  const [media, setMedia] = useState()
+  const [mediaVideos, setMediaVideos] = useState()
+  const [mediaSimilar, setMediaSimilar] = useState()
+  const [mediaCredits, setMediaCredits] = useState()
+  const { type, id } = useParams()
 
   useEffect(() => {
     const getAllData = async () => {
-      Promise.all([
-        getPopularMovieById(id),
-        getPopularMovieVideos(id),
-        getPopularMovieSimilar(id),
-        getPopularMovieCredits(id)
-      ])
-        .then(([movie, video, similar, credits]) => {
-          setPopularMovie(movie)
-          setPopularMovieVideos(video)
-          setPopularMovieSimilar(similar)
-          setPopularMovieCredits(credits)
-        })
-        .catch((err) => console.error(err))
+      try {
+        const [mediaDetails, videos, similar, credits] = await Promise.all([
+          type === 'filme' ? getMovieById(id) : getSerieById(id),
+          type === 'filme' ? getMovieVideos(id) : getSerieVideos(id),
+          type === 'filme' ? getMovieSimilar(id) : getSerieSimilar(id),
+          type === 'filme' ? getMovieCredits(id) : getSerieCredits(id)
+        ])
+        setMedia(mediaDetails)
+        setMediaVideos(videos)
+        setMediaSimilar(similar)
+        setMediaCredits(credits)
+      } catch (error) {
+        console.log(error)
+      }
     }
     getAllData()
-  }, [])
+  }, [type, id])
 
   return (
     <>
-      {popularMovie ? (
+      {media ? (
         <>
-          <Background
-            $image={getImages(popularMovie.backdrop_path)}
-          ></Background>
+          <Background $image={getImages(media.backdrop_path)}></Background>
           <DetailContainer>
             <Cover>
               <img
-                src={getImages(popularMovie.poster_path)}
-                alt={`imagem ${popularMovie.title} `}
+                src={getImages(media.poster_path)}
+                alt={`imagem ${media.title} `}
               />
             </Cover>
             <Info>
-              <h1>{popularMovie.title}</h1>
-              <SpanGeneres genres={popularMovie.genres} />
-              <p>{popularMovie.overview}</p>
-              <Credits credits={popularMovieCredits} />
+              <h1>{media.title}</h1>
+              <SpanGeneres genres={media.genres} />
+              <p>{media.overview}</p>
+              <Credits credits={mediaCredits} />
             </Info>
           </DetailContainer>
           <VideoContainer>
             <h2>Principais Trailers</h2>
             <div>
-              {popularMovieVideos &&
-                popularMovieVideos.map((video) => (
+              {mediaVideos &&
+                mediaVideos.map((video) => (
                   <div key={video.id}>
                     <iframe
                       src={`https://www.youtube.com/embed/${video.key}`}
@@ -83,8 +85,8 @@ const Detail = () => {
                 ))}
             </div>
           </VideoContainer>
-          {popularMovieSimilar && (
-            <Slider info={popularMovieSimilar} title={'Filmes similares'} />
+          {mediaSimilar && (
+            <Slider info={mediaSimilar} title={'Filmes similares'} />
           )}
         </>
       ) : (

@@ -35,32 +35,6 @@ export const getPopularPerson = async () => {
   return results
 }
 
-export const getPopularMovieVideos = async (movieId) => {
-  const {
-    data: { results }
-  } = await api.get(`movie/${movieId}/videos`)
-  return results
-}
-
-export const getPopularMovieCredits = async (movieId) => {
-  const {
-    data: { cast }
-  } = await api.get(`movie/${movieId}/credits`)
-  return cast
-}
-
-export const getPopularMovieSimilar = async (movieId) => {
-  const {
-    data: { results }
-  } = await api.get(`movie/${movieId}/similar`)
-  return results
-}
-
-export const getPopularMovieById = async (movieId) => {
-  const { data } = await api.get(`movie/${movieId}`)
-  return data
-}
-
 export const getUpcomingMovie = async () => {
   const {
     data: { results }
@@ -68,9 +42,54 @@ export const getUpcomingMovie = async () => {
   return results
 }
 
-export const getPopularSerieVideos = async (serieId) => {
+export const getMovieById = async (movieId) => {
+  const { data } = await api.get(`movie/${movieId}`)
+  return data
+}
+
+export const getMovieVideos = async (movieId) => {
+  const {
+    data: { results }
+  } = await api.get(`movie/${movieId}/videos`)
+  return results
+}
+
+export const getMovieCredits = async (movieId) => {
+  const {
+    data: { cast }
+  } = await api.get(`movie/${movieId}/credits`)
+  return cast
+}
+
+export const getMovieSimilar = async (movieId) => {
+  const {
+    data: { results }
+  } = await api.get(`movie/${movieId}/similar`)
+  return results
+}
+
+export const getSerieById = async (serieId) => {
+  const { data } = await api.get(`tv/${serieId}`)
+  return data
+}
+
+export const getSerieVideos = async (serieId) => {
   const {
     data: { results }
   } = await api.get(`tv/${serieId}/videos`)
+  return results
+}
+
+export const getSerieCredits = async (serieId) => {
+  const {
+    data: { cast }
+  } = await api.get(`tv/${serieId}/credits`)
+  return cast
+}
+
+export const getSerieSimilar = async (serieId) => {
+  const {
+    data: { results }
+  } = await api.get(`tv/${serieId}/similar`)
   return results
 }

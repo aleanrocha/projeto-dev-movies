@@ -1,31 +1,28 @@
 import { useState, useEffect } from 'react'
 import { FaX } from 'react-icons/fa6'
 
-import {
-  getPopularMovieVideos,
-  getPopularSerieVideos
-} from '../../services/getData'
+import { getMovieVideos, getSerieVideos } from '../../services/getData'
 import { Background, ModalContainer } from './styles'
 
 const Modal = ({ movieId, serieId, setShowModal }) => {
-  const [popularMovieVideo, setPopularMovieVideo] = useState()
-  const [popularSerieVideo, setPopularSerieVideo] = useState()
+  const [movieVideo, setMovieVideo] = useState()
+  const [serieVideo, setSerieVideo] = useState()
 
   useEffect(() => {
-    const getPopularVideos = async () => {
-      if (movieId) setPopularMovieVideo(await getPopularMovieVideos(movieId))
-      if (serieId) setPopularSerieVideo(await getPopularSerieVideos(serieId))
+    const getVideos = async () => {
+      if (movieId) setMovieVideo(await getMovieVideos(movieId))
+      if (serieId) setSerieVideo(await getSerieVideos(serieId))
     }
-    getPopularVideos()
-  }, [])
+    getVideos()
+  }, [movieId, serieId])
 
   return (
     <Background>
-      {(popularMovieVideo || popularSerieVideo) && (
+      {(movieVideo || serieVideo) && (
         <ModalContainer>
           <FaX onClick={() => setShowModal(false)} />
           <iframe
-            src={`https://www.youtube.com/embed/${(popularMovieVideo && popularMovieVideo[0].key) || (popularSerieVideo && popularSerieVideo[0].key)}`}
+            src={`https://www.youtube.com/embed/${(movieVideo && movieVideo[0].key) || (serieVideo && serieVideo[0].key)}`}
             title="YouTube video player"
             allowFullScreen
           ></iframe>

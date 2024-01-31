@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
-import Button from '../../components/Button'
+import Background from '../../components/Background'
 import Loader from '../../components/Loader'
-import Modal from '../../components/Modal'
 import Slider from '../../components/Slider'
 import {
   getPopularMovies,
@@ -11,17 +9,12 @@ import {
   getPopularSeries,
   getRatedMovies
 } from '../../services/getData'
-import getImages from '../../utils/getImages'
-import { Background, AlignContent, Info, Poster } from './styles'
 
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState()
   const [popularSeries, setPopularSeries] = useState()
   const [ratedMovies, setRatedMovies] = useState()
   const [popularPerson, setPopularPerson] = useState()
-  const [showModal, setShowModal] = useState(false)
-
-  const navigate = useNavigate()
 
   useEffect(() => {
     const getAllData = async () => {
@@ -46,36 +39,7 @@ const Home = () => {
     <>
       {popularMovies ? (
         <>
-          <Background $image={getImages(popularMovies[0].backdrop_path)}>
-            {showModal && (
-              <Modal
-                setShowModal={setShowModal}
-                movieId={popularMovies[0].id}
-              />
-            )}
-            <AlignContent>
-              <Info>
-                <h1>{popularMovies[0].title}</h1>
-                <p>{popularMovies[0].overview}</p>
-                <Button
-                  onClick={() =>
-                    navigate(`detalhe/filme/${popularMovies[0].id}/`)
-                  }
-                >
-                  Assistir agora
-                </Button>
-                <Button onClick={() => setShowModal(true)}>
-                  Assistir o trailer
-                </Button>
-              </Info>
-              <Poster>
-                <img
-                  src={getImages(popularMovies[0].poster_path)}
-                  alt={`imagem ${popularMovies[0].original_title}`}
-                />
-              </Poster>
-            </AlignContent>
-          </Background>
+          <Background media={popularMovies[0]} />
           <Slider info={popularMovies} title={'Filmes populares'} />
           <Slider info={popularSeries} title={'Séries populares'} />
           <Slider info={ratedMovies} title={'Top filmes'} />

@@ -6,12 +6,14 @@ import Detail from './containers/Detail'
 import Home from './containers/Home'
 import Movies from './containers/Movies'
 import Series from './containers/Series'
+import ErrorBoundary from './router/errorBoundary'
 import Root from './router/root'
 import GlobalStyle from './styles/globalStyle'
 
 const router = createBrowserRouter([
   {
     element: <Root />,
+    errorElement: <ErrorBoundary />,
     children: [
       {
         path: '/',

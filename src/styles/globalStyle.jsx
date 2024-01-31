@@ -14,6 +14,15 @@ const globalStyle = createGlobalStyle`
     color: #fafafa;
     overflow-x: hidden;
   }
+  .errorPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100vh;
+    font-size: 1.5rem;
+  }
 `
 
 export default globalStyle

@@ -40,14 +40,14 @@ const Header = () => {
               className={({ isActive, isPending }) =>
                 isPending ? 'pending' : isActive ? 'active' : ''
               }
-              onClick={() => setOpen(!open)}
+              onClick={() => setOpen(false)}
             >
               Início
             </NavLink>
-            <NavLink to={'/filmes'} onClick={() => setOpen(!open)}>
+            <NavLink to={'/filmes'} onClick={() => setOpen(false)}>
               Filmes
             </NavLink>
-            <NavLink to={'/series'} onClick={() => setOpen(!open)}>
+            <NavLink to={'/series'} onClick={() => setOpen(false)}>
               Séries
             </NavLink>
           </NavBar>

@@ -7,11 +7,6 @@ export const FooterContainer = styled.footer`
   text-align: center;
   background-color: #000000;
   border-top: 1px dotted #d7a33d;
-
-  @media screen and (max-width: 580px) {
-    flex-direction: column;
-    gap: 3rem;
-  }
 `
 export const AlignContent = styled.div`
   max-width: 1440px;
@@ -21,6 +16,11 @@ export const AlignContent = styled.div`
   align-items: center;
   flex-direction: row-reverse;
   gap: 1rem;
+
+  @media screen and (max-width: 580px) {
+    flex-direction: column;
+    gap: 3rem;
+  }
 `
 
 export const Wrapper = styled.div`

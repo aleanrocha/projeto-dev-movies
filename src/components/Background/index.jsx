@@ -29,9 +29,9 @@ const Background = ({ media, type }) => {
               )
             }
           >
-            Assistir agora
+            Saiba mais
           </Button>
-          <Button onClick={() => setShowModal(true)}>Assistir o trailer</Button>
+          <Button onClick={() => setShowModal(true)}>Assistir trailer</Button>
         </Info>
         <Poster>
           <img

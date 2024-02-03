@@ -36,7 +36,7 @@ const Header = () => {
           <CloseMenu $isMobile={open} onClick={handleToggleMenu} />
           <NavBar $isMobile={open}>
             <NavLink
-              to={'/'}
+              to={'/projeto-dev-movies'}
               className={({ isActive, isPending }) =>
                 isPending ? 'pending' : isActive ? 'active' : ''
               }
@@ -44,10 +44,16 @@ const Header = () => {
             >
               Início
             </NavLink>
-            <NavLink to={'/filmes'} onClick={() => setOpen(false)}>
+            <NavLink
+              to={'/projeto-dev-movies/filmes'}
+              onClick={() => setOpen(false)}
+            >
               Filmes
             </NavLink>
-            <NavLink to={'/series'} onClick={() => setOpen(false)}>
+            <NavLink
+              to={'/projeto-dev-movies/series'}
+              onClick={() => setOpen(false)}
+            >
               Séries
             </NavLink>
           </NavBar>

@@ -16,19 +16,19 @@ const router = createBrowserRouter([
     errorElement: <ErrorBoundary />,
     children: [
       {
-        path: '/',
+        path: '/projeto-dev-movies/',
         element: <Home />
       },
       {
-        path: 'filmes',
+        path: '/projeto-dev-movies/filmes',
         element: <Movies />
       },
       {
-        path: 'series',
+        path: '/projeto-dev-movies/series',
         element: <Series />
       },
       {
-        path: 'detalhe/:type/:id',
+        path: '/projeto-dev-movies/detalhe/:type/:id',
         element: <Detail />
       }
     ]

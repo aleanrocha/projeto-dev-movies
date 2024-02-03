@@ -578,4 +578,4 @@ Error generating stack: `+o.message+`
     height: 100vh;
     font-size: 1.5rem;
   }
-`,IC=lw([{element:L.jsx(MC,{}),errorElement:L.jsx(vC,{}),children:[{path:"/",element:L.jsx(hC,{})},{path:"filmes",element:L.jsx(mC,{})},{path:"series",element:L.jsx(gC,{})},{path:"detalhe/:type/:id",element:L.jsx(YT,{})}]}]);wa.createRoot(document.getElementById("root")).render(L.jsxs(q.StrictMode,{children:[L.jsx(NC,{}),L.jsx(mw,{router:IC})]}));
+`,IC=lw([{element:L.jsx(MC,{}),errorElement:L.jsx(vC,{}),children:[{path:"/projeto-dev-movies/",element:L.jsx(hC,{})},{path:"/projeto-dev-movies/filmes",element:L.jsx(mC,{})},{path:"/projeto-dev-movies/series",element:L.jsx(gC,{})},{path:"/projeto-dev-movies/detalhe/:type/:id",element:L.jsx(YT,{})}]}]);wa.createRoot(document.getElementById("root")).render(L.jsxs(q.StrictMode,{children:[L.jsx(NC,{}),L.jsx(mw,{router:IC})]}));

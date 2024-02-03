@@ -7,7 +7,6 @@ import getImages from '../../utils/getImages'
 import { BackgroundContainer, AlignContent, Info, Poster } from './styles'
 
 const Background = ({ media, type }) => {
-  console.log(type)
   const [showModal, setShowModal] = useState(false)
   const navigate = useNavigate()
 

@@ -23,8 +23,8 @@ const Background = ({ media, type }) => {
             onClick={() =>
               navigate(
                 type === 'series'
-                  ? `/detalhe/serie/${media.id}/`
-                  : `/detalhe/filme/${media.id}/`
+                  ? `/projeto-dev-movies/detalhe/serie/${media.id}/`
+                  : `/projeto-dev-movies/detalhe/filme/${media.id}/`
               )
             }
           >

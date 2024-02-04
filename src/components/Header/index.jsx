@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 import logo from '../../assets/dev-movies-logo.png'
 import {
@@ -8,6 +8,7 @@ import {
   Img,
   NavBarContainer,
   NavBar,
+  LinkStyled,
   ShowMenu,
   CloseMenu
 } from './styles'
@@ -17,6 +18,7 @@ const Header = () => {
   const [changeBackground, setChangeBackground] = useState(false)
 
   const handleToggleMenu = () => setOpen(!open)
+  const { pathname } = useLocation()
 
   window.onscroll = () => {
     if (!changeBackground && window.scrollY > 96) {
@@ -35,27 +37,27 @@ const Header = () => {
           <ShowMenu $isMobile={open} onClick={handleToggleMenu} />
           <CloseMenu $isMobile={open} onClick={handleToggleMenu} />
           <NavBar $isMobile={open}>
-            <NavLink
-              to={'/projeto-dev-movies'}
-              className={({ isActive, isPending }) =>
-                isPending ? 'pending' : isActive ? 'active' : ''
-              }
+            <LinkStyled
+              to={'/projeto-dev-movies/'}
+              $isActive={pathname === '/projeto-dev-movies/'}
               onClick={() => setOpen(false)}
             >
               Início
-            </NavLink>
-            <NavLink
+            </LinkStyled>
+            <LinkStyled
               to={'/projeto-dev-movies/filmes'}
+              $isActive={pathname === '/projeto-dev-movies/filmes'}
               onClick={() => setOpen(false)}
             >
               Filmes
-            </NavLink>
-            <NavLink
+            </LinkStyled>
+            <LinkStyled
               to={'/projeto-dev-movies/series'}
+              $isActive={pathname === '/projeto-dev-movies/series'}
               onClick={() => setOpen(false)}
             >
               Séries
-            </NavLink>
+            </LinkStyled>
           </NavBar>
         </NavBarContainer>
       </AlignContent>

@@ -1,4 +1,5 @@
 import { FaBars, FaX } from 'react-icons/fa6'
+import { Link } from 'react-router-dom'
 
 import styled from 'styled-components'
 
@@ -67,38 +68,33 @@ export const NavBar = styled.nav`
   @media screen and (max-width: 768px) {
     display: ${(props) => (props.$isMobile ? 'flex' : 'none')};
   }
-  & > a {
-    color: #fafafa;
-    font-weight: 700;
-    font-size: 1rem;
-    letter-spacing: 0.025rem;
-    cursor: pointer;
-    transition: 0.3s;
-    position: relative;
-    &::after {
-      content: '';
-      display: block;
-      width: 0%;
-      height: 3px;
-      background-color: #d7a33d;
-      position: absolute;
-      left: 50%;
-      bottom: -10px;
-      transform: translate(-50%);
-      transition: width 0.3s ease-in-out;
-    }
-    &:hover {
-      color: #d7a33d;
-    }
-    &:hover::after {
-      width: 100%;
-    }
-    &.active {
-      color: #d7a33d;
-    }
-    &.active::after {
-      width: 100%;
-    }
+`
+
+export const LinkStyled = styled(Link)`
+  color: ${(props) => (props.$isActive ? '#d7a33d' : '#fafafa')};
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.025rem;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    width: ${(props) => (props.$isActive ? '100%' : '0')};
+    height: 3px;
+    background-color: #d7a33d;
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translate(-50%);
+    transition: width 0.3s ease-in-out;
+  }
+  &:hover {
+    color: #d7a33d;
+  }
+  &:hover::after {
+    width: 100%;
   }
 `
 export const ShowMenu = styled(FaBars)`

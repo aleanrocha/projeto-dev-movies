@@ -14,7 +14,7 @@ const ErrorBoundary = () => {
       {error.data?.message && <p>{error.data.message}</p>}
       <Button
         style={{ marginRight: 0 }}
-        onClick={() => navigate('/projeto-dev-movies')}
+        onClick={() => navigate('/projeto-dev-movies/')}
       >
         Voltar ao Início
       </Button>

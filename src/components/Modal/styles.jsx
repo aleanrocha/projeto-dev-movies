@@ -42,4 +42,16 @@ export const ModalContainer = styled.div`
       background-color: #ff0000;
     }
   }
+  @media screen and (max-width: 768px) {
+    height: 50%;
+  }
+  @media screen and (max-width: 480px) {
+    max-width: 90%;
+    > svg {
+      position: absolute;
+      top: -60px;
+      right: 50%;
+      transform: translateX(50%);
+    }
+  }
 `

@@ -64,7 +64,7 @@ const Detail = () => {
               />
             </Cover>
             <Info>
-              <h1>{media.title}</h1>
+              <h1>{media.title || media.name}</h1>
               <SpanGeneres genres={media.genres} />
               <p>{media.overview}</p>
               <Credits credits={mediaCredits} />

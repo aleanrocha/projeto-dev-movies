@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const GenreContainer = styled.div`
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   gap: 0.6rem;
   @media screen and (max-width: 580px) {
     justify-content: center;

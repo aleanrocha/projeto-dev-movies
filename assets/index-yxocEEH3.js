@@ -380,6 +380,7 @@ Error generating stack: `+o.message+`
   background: url(${e=>e.$image}) center / cover;
   min-height: 100vh;
   max-height: 992px;
+  padding-top: 96px;
   display: flex;
   justify-content: center;
   z-index: 1;

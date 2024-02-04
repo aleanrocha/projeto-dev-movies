@@ -11,7 +11,7 @@ const scale = keyframes`
 
 export const BackgroundContainer = styled.section`
   background: url(${(props) => props.$image}) center / cover;
-  height: 100vh;
+  min-height: 100vh;
   max-height: 992px;
   padding-top: 96px;
   display: flex;

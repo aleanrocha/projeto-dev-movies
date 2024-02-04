@@ -162,6 +162,7 @@ Error generating stack: `+o.message+`
 `,Qn=({info:e,title:t,isPerson:n})=>O.jsxs(oE,{$isPerson:n,children:[O.jsx(sE,{children:t}),O.jsx(Lg,{spaceBetween:n?"none":"20",slidesPerView:n?"none":"auto",grabCursor:!0,className:"swiper",children:e.map((r,i)=>O.jsx(Ng,{children:O.jsx(iE,{imagePoster:r.poster_path||r.profile_path,imageTitle:r.title||r.name,isPerson:n})},i))})]}),lE=J.div`
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   gap: 0.6rem;
   @media screen and (max-width: 580px) {
     justify-content: center;
@@ -298,7 +299,7 @@ Error generating stack: `+o.message+`
       }
     }
   }
-`,HT=()=>{const[e,t]=k.useState(),[n,r]=k.useState(),[i,o]=k.useState(),[s,a]=k.useState(),{type:l,id:u}=$1();return k.useEffect(()=>{(async()=>{try{const[d,p,g,v]=await Promise.all([l==="filme"?NT(u):DT(u),l==="filme"?ev(u):tv(u),l==="filme"?zT(u):jT(u),l==="filme"?IT(u):AT(u)]);t(d),r(p),o(g),a(v)}catch(d){console.log(d)}})()},[l,u]),O.jsx(O.Fragment,{children:e?O.jsxs(O.Fragment,{children:[O.jsx(FT,{$image:Hr(e.backdrop_path)}),O.jsxs($T,{children:[O.jsx(BT,{children:O.jsx("img",{src:Hr(e.poster_path),alt:`imagem ${e.title} `})}),O.jsxs(UT,{children:[O.jsx("h1",{children:e.title}),O.jsx(uE,{genres:e.genres}),O.jsx("p",{children:e.overview}),O.jsx(TS,{credits:s})]})]}),O.jsxs(VT,{children:[O.jsx("h2",{children:"Principais Trailers"}),O.jsx("div",{children:n&&n.map(c=>O.jsx("div",{children:O.jsx("iframe",{src:`https://www.youtube.com/embed/${c.key}`,title:"YouTube video player",allowFullScreen:!0})},c.id))})]}),i&&O.jsx(Qn,{info:i,title:"Filmes similares"})]}):O.jsx(gl,{})})},WT=J.button`
+`,HT=()=>{const[e,t]=k.useState(),[n,r]=k.useState(),[i,o]=k.useState(),[s,a]=k.useState(),{type:l,id:u}=$1();return k.useEffect(()=>{(async()=>{try{const[d,p,g,v]=await Promise.all([l==="filme"?NT(u):DT(u),l==="filme"?ev(u):tv(u),l==="filme"?zT(u):jT(u),l==="filme"?IT(u):AT(u)]);t(d),r(p),o(g),a(v)}catch(d){console.log(d)}})()},[l,u]),O.jsx(O.Fragment,{children:e?O.jsxs(O.Fragment,{children:[O.jsx(FT,{$image:Hr(e.backdrop_path)}),O.jsxs($T,{children:[O.jsx(BT,{children:O.jsx("img",{src:Hr(e.poster_path),alt:`imagem ${e.title} `})}),O.jsxs(UT,{children:[O.jsx("h1",{children:e.title||e.name}),O.jsx(uE,{genres:e.genres}),O.jsx("p",{children:e.overview}),O.jsx(TS,{credits:s})]})]}),O.jsxs(VT,{children:[O.jsx("h2",{children:"Principais Trailers"}),O.jsx("div",{children:n&&n.map(c=>O.jsx("div",{children:O.jsx("iframe",{src:`https://www.youtube.com/embed/${c.key}`,title:"YouTube video player",allowFullScreen:!0})},c.id))})]}),i&&O.jsx(Qn,{info:i,title:"Filmes similares"})]}):O.jsx(gl,{})})},WT=J.button`
   background-color: transparent;
   color: #fafafa;
   font-size: 1rem;
@@ -379,10 +380,10 @@ Error generating stack: `+o.message+`
   background: url(${e=>e.$image}) center / cover;
   min-height: 100vh;
   max-height: 992px;
-  padding-top: 96px;
   display: flex;
   justify-content: center;
   z-index: 1;
+  position: relative;
 
   &::before {
     content: '';

@@ -18,6 +18,14 @@ export const Image = styled.img`
   max-width: 260px;
   border-radius: 1rem;
   transition: 0.3s;
+  @media screen and (max-width: 387px) {
+    ${(props) =>
+      props.$isPerson &&
+      `
+      max-width: 85%;
+      margin: auto;
+    `}
+  }
 `
 
 export const ImageTitle = styled.h3`

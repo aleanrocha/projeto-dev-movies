@@ -21,4 +21,7 @@ export const Title = styled.h2`
   color: #d7a33d;
   padding: 1.5rem 0;
   text-transform: uppercase;
+  @media screen and (max-width: 480px) {
+    text-align: center;
+  }
 `

@@ -18,6 +18,7 @@ const Slider = ({ info, title, isPerson }) => {
             <Card
               imagePoster={info.poster_path || info.profile_path}
               imageTitle={info.title || info.name}
+              isPerson={isPerson}
             />
           </SwiperSlide>
         ))}

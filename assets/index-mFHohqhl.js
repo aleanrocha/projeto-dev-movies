@@ -384,7 +384,6 @@ Error generating stack: `+o.message+`
   display: flex;
   justify-content: center;
   z-index: 1;
-  position: relative;
 
   &::before {
     content: '';

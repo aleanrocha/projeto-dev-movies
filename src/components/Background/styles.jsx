@@ -16,7 +16,6 @@ export const BackgroundContainer = styled.section`
   display: flex;
   justify-content: center;
   z-index: 1;
-  position: relative;
 
   &::before {
     content: '';

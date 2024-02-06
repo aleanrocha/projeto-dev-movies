@@ -276,8 +276,6 @@ Error generating stack: `+o.message+`
   }
 
   > div {
-    ${e=>console.log(e)}
-
     background-color: #1f1e1e;
     border-radius: 1rem;
     display: grid;

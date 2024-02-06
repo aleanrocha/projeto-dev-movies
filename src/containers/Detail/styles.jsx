@@ -100,8 +100,6 @@ export const VideoContainer = styled.section`
   }
 
   > div {
-    ${(props) => console.log(props)}
-
     background-color: #1f1e1e;
     border-radius: 1rem;
     display: grid;

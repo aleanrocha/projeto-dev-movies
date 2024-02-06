@@ -100,26 +100,35 @@ export const VideoContainer = styled.section`
   }
 
   > div {
+    ${(props) => console.log(props)}
+
     background-color: #1f1e1e;
     border-radius: 1rem;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: ${(props) =>
+      props.$isSingleTrailer ? 'repeat(1, 85%)' : 'repeat(2, 1fr)'};
     gap: 1rem;
     padding: 2rem;
+    justify-content: center;
 
-    @media screen and (max-width: 768px) {
-      grid-template-columns: repeat(1, 1fr);
-      padding: 1rem;
-    }
     > div {
       background-color: #000;
       width: 100%;
-      height: 300px;
+      height: ${(props) => (props.$isSingleTrailer ? '480px' : '300px')};
 
       > iframe {
         width: 100%;
         height: 100%;
         border: none;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: repeat(1, 1fr);
+      padding: 1rem;
+
+      > div {
+        height: 300px;
       }
     }
   }

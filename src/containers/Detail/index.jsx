@@ -70,7 +70,7 @@ const Detail = () => {
               <Credits credits={mediaCredits} />
             </Info>
           </DetailContainer>
-          <VideoContainer>
+          <VideoContainer $isSingleTrailer={mediaVideos.length === 1}>
             <h2>Principais Trailers</h2>
             <div>
               {mediaVideos &&

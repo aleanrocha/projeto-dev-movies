@@ -39,7 +39,7 @@ const Home = () => {
     <>
       {popularMovies ? (
         <>
-          <Background media={popularMovies[0]} />
+          <Background media={popularMovies[1]} />
           <Slider info={popularMovies} title={'Filmes populares'} />
           <Slider info={popularSeries} title={'Séries populares'} />
           <Slider info={ratedMovies} title={'Top filmes'} />
